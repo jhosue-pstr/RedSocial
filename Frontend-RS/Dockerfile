@@ -1,24 +1,22 @@
-# Etapa 1: Compilar Flutter web
-FROM ghcr.io/cirruslabs/flutter:3.24.3 AS build
+# Etapa 1: Construir con Flutter (versión reciente)
+FROM ghcr.io/cirruslabs/flutter:3.35.5 AS build
 
 WORKDIR /app
 
-# Copiamos el código fuente
+# Copiar los archivos del proyecto
 COPY . .
 
-# Compilamos el proyecto Flutter para Web
+# Compilar la aplicación para Web
 RUN flutter build web --release
 
 # Etapa 2: Servir con Nginx
 FROM nginx:alpine
 
-# Limpiamos el html default de Nginx
-RUN rm -rf /usr/share/nginx/html/*
-
-# Copiamos la build de Flutter desde la etapa anterior
+# Copiar la build generada al directorio de Nginx
 COPY --from=build /app/build/web /usr/share/nginx/html
 
-# Exponemos el puerto
+# Exponer el puerto 80
 EXPOSE 80
 
+# Iniciar Nginx
 CMD ["nginx", "-g", "daemon off;"]

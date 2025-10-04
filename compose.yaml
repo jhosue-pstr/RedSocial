@@ -29,14 +29,12 @@ services:
     environment:
       - PMA_ARBITRARY=1
 
-  # frontend:
-  #   build:
-  #     context: ./Frontend-RS
-  #     dockerfile: Dockerfile
-  #   container_name: flutter-frontend-RS
-  #   ports:
-  #     - "3000:80"
-  #   restart: always
+  frontend:
+    image: jhosuepstr/frontend-rs:latest
+    container_name: flutter-frontend-RS
+    ports:
+      - "3000:80"
+    restart: always
 
 volumes:
   mysql_data:
