@@ -1,12 +1,13 @@
 from sqlmodel import Field, SQLModel, Relationship
 from typing import Optional, List
 import datetime
+from pydantic import BaseModel
 
 
 class UsuarioBase(SQLModel):
     Nombre: str
     Apellido: str
-    Correo: str
+    Correo: str = Field(unique=True, index=True)  # Agregar unique para login
 
 
 class Usuario(UsuarioBase, table=True):
@@ -34,3 +35,19 @@ class UsuarioUpdate(SQLModel):
     Correo: Optional[str] = None
     Contrasena: Optional[str] = None
     estado: Optional[bool] = None
+
+
+# Modelos para autenticación
+class Token(BaseModel):
+    access_token: str
+    token_type: str
+    user: UsuarioPublic  # Incluir datos del usuario en la respuesta
+
+
+class TokenData(BaseModel):
+    username: Optional[str] = None
+
+
+class UserLogin(BaseModel):
+    Correo: str  # Usaremos el correo como username
+    Contrasena: str
