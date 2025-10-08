@@ -1,37 +1,64 @@
+import 'dart:convert';
+
 class Mensaje {
-  final int idMensaje;
+  final int? idMensaje;
   final String contenido;
   final bool leido;
   final int idConversacion;
   final int idUsuario;
-  final DateTime fechaEnvio;
+  final DateTime? fechaEnvio;
 
   const Mensaje({
-    required this.idMensaje,
+    this.idMensaje,
     required this.contenido,
-    required this.leido,
+    this.leido = false,
     required this.idConversacion,
     required this.idUsuario,
-    required this.fechaEnvio,
+    this.fechaEnvio,
   });
 
   factory Mensaje.fromJson(Map<String, dynamic> json) {
     return Mensaje(
-      idMensaje: json['idMensaje'] ?? 0,
-      contenido: json['contenido'] ?? "",
-      leido: json['leido'] ?? "",
-      idConversacion: json['idConversacion'] ?? 0,
-      idUsuario: json['idUsuario'] ?? 0,
-      fechaEnvio: DateTime.parse(json['fechaEnvio']),
+      idMensaje: json['IdMensaje'],
+      contenido: json['Contenido'] ?? '',
+      leido: json['Leido'] ?? false,
+      idConversacion: json['IdConversacion'] ?? 0,
+      idUsuario: json['IdUsuario'] ?? 0,
+      fechaEnvio: json['FechaEnvio'] != null
+          ? DateTime.tryParse(json['FechaEnvio'])
+          : null,
     );
   }
 
-  Map<String, dynamic> toJson() => {
-    'idMensaje': idMensaje,
-    'contenido': contenido,
-    'leido': leido,
-    'idConversacion': idConversacion,
-    'idUsuario': idUsuario,
-    'fechaEnvio': fechaEnvio.toIso8601String(),
-  };
+  Map<String, dynamic> toJson() {
+    return {
+      'IdMensaje': idMensaje,
+      'Contenido': contenido,
+      'Leido': leido,
+      'IdConversacion': idConversacion,
+      'IdUsuario': idUsuario,
+      'FechaEnvio': fechaEnvio?.toIso8601String(),
+    };
+  }
+
+  Mensaje copyWith({
+    int? idMensaje,
+    String? contenido,
+    bool? leido,
+    int? idConversacion,
+    int? idUsuario,
+    DateTime? fechaEnvio,
+  }) {
+    return Mensaje(
+      idMensaje: idMensaje ?? this.idMensaje,
+      contenido: contenido ?? this.contenido,
+      leido: leido ?? this.leido,
+      idConversacion: idConversacion ?? this.idConversacion,
+      idUsuario: idUsuario ?? this.idUsuario,
+      fechaEnvio: fechaEnvio ?? this.fechaEnvio,
+    );
+  }
+
+  @override
+  String toString() => jsonEncode(toJson());
 }

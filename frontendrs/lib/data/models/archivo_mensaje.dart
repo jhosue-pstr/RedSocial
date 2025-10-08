@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 class ArchivoMensaje {
   final int idArchivo;
   final int idMensaje;
@@ -14,4 +12,22 @@ class ArchivoMensaje {
     required this.tipoArchivo,
     required this.subidoHace,
   });
+
+  factory ArchivoMensaje.fromJson(Map<String, dynamic> json) {
+    return ArchivoMensaje(
+      idArchivo: json['IdArchivo'] ?? 0,
+      idMensaje: json['IdMensaje'] ?? 0,
+      urlArchivo: json['UrlArchivo'] ?? '',
+      tipoArchivo: json['TipoArchivo'] ?? '',
+      subidoHace: DateTime.parse(json['SubidoHace']),
+    );
+  }
+
+  Map<String, dynamic> toJson() => {
+    'IdArchivo': idArchivo,
+    'IdMensaje': idMensaje,
+    'UrlArchivo': urlArchivo,
+    'TipoArchivo': tipoArchivo,
+    'SubidoHace': subidoHace.toIso8601String(),
+  };
 }
