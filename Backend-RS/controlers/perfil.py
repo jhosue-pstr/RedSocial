@@ -1,5 +1,5 @@
 from fastapi import HTTPException
-from sqlmodel import Session
+from sqlmodel import Session, select
 from config.database import get_session
 from models.perfil import Perfil, PerfilCreate, PerfilPublic, PerfilUpdate
 from models.usuario import Usuario  # Asegúrate de importar Usuario para verificar la relación
@@ -43,6 +43,10 @@ def LeerPerfilPorId(IdPerfil: int, session: Session) -> PerfilPublic:
         raise HTTPException(status_code=404, detail="Perfil no encontrado")
     return PerfilPublic.model_validate(perfil)
 
+# Leer todos los perfiles
+def LeerPerfiles(session: Session) -> list[PerfilPublic]:
+    perfiles = session.exec(select(Perfil)).all()  # Obtener todos los perfiles
+    return [PerfilPublic.model_validate(p) for p in perfiles]
 
 # Actualizar el perfil de un usuario
 def ActualizarPerfil(IdPerfil: int, datos: PerfilUpdate, session: Session) -> PerfilPublic:
