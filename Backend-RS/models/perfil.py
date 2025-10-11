@@ -1,4 +1,6 @@
 from sqlmodel import Field, SQLModel, Relationship
+
+from typing import List
 from typing import Optional
 import datetime
 from models.usuario import Usuario  # Asegúrate de importar el modelo Usuario
@@ -31,6 +33,8 @@ class Perfil(PerfilBase, table=True):
 
     # Relación inversa: Un perfil pertenece a un usuario
     usuario: "Usuario" = Relationship(back_populates="perfil")
+    enlaces_perfil: List["EnlacesPerfil"] = Relationship(back_populates="perfil")
+    
 
 # Modelos de entrada/salida para el perfil
 class PerfilCreate(PerfilBase):
