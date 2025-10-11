@@ -14,6 +14,7 @@ from routers.participantes_conversacion import router as participante_router
 from routers.auth import router as auth_router  # Nuevo router de autenticación
 from routers.perfil import router as perfil_router  # Nuevo router de perfil
 from routers.enlaces_perfil import router as enlaces_perfil_router
+from routers.fotos_perfil import router as fotos_perfil_router
 
 app = FastAPI()
 
@@ -28,6 +29,7 @@ app.include_router(archivo_router, prefix="/api", tags=["archivosmensajes"])
 app.include_router(participante_router, prefix="/api", tags=["participantes"])
 app.include_router(perfil_router, prefix="/api", tags=["perfiles"])
 app.include_router(enlaces_perfil_router, prefix="/api", tags=["enlaces_perfil"])
+app.include_router(fotos_perfil_router, prefix="/api", tags=["fotos_perfil"])
 
 @app.on_event("startup")
 def on_startup():

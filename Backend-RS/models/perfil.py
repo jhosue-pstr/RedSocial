@@ -34,6 +34,8 @@ class Perfil(PerfilBase, table=True):
     # Relación inversa: Un perfil pertenece a un usuario
     usuario: "Usuario" = Relationship(back_populates="perfil")
     enlaces_perfil: List["EnlacesPerfil"] = Relationship(back_populates="perfil")
+    fotos_perfil: List["FotosPerfil"] = Relationship(back_populates="perfil")
+
     
 
 # Modelos de entrada/salida para el perfil
