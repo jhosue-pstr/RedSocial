@@ -1,8 +1,10 @@
 from sqlmodel import Field, SQLModel, Relationship
 from typing import Optional
 import datetime
+from models.usuario import Usuario  # Asegúrate de importar el modelo Usuario
+from config.database import get_session
 
-
+# Base de datos para el Perfil
 class PerfilBase(SQLModel):
     Descripcion: Optional[str] = None
     FotoPerfil: Optional[str] = None
@@ -21,20 +23,18 @@ class PerfilBase(SQLModel):
     Biografia: Optional[str] = None
     SitioWeb: Optional[str] = None
 
-
 class Perfil(PerfilBase, table=True):
     IdPerfil: Optional[int] = Field(default=None, primary_key=True)
     FechaCreacion: datetime.datetime = Field(default_factory=datetime.datetime.utcnow)
     UltimaActualizacion: datetime.datetime = Field(default_factory=datetime.datetime.utcnow)
     IdUsuario: int = Field(foreign_key="usuario.IdUsuario")  # Relación con Usuario
 
-    # Relaciones con otros modelos
+    # Relación inversa: Un perfil pertenece a un usuario
     usuario: "Usuario" = Relationship(back_populates="perfil")
 
-
+# Modelos de entrada/salida para el perfil
 class PerfilCreate(PerfilBase):
     pass
-
 
 class PerfilPublic(PerfilBase):
     IdPerfil: int
@@ -42,6 +42,9 @@ class PerfilPublic(PerfilBase):
     UltimaActualizacion: datetime.datetime
     IdUsuario: int
 
-
 class PerfilUpdate(PerfilBase):
     pass
+
+
+from models.usuario import UsuarioPublic
+PerfilPublic.model_rebuild()

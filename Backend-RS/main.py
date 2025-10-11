@@ -1,3 +1,8 @@
+
+import sys
+import os
+sys.path.append(os.path.join(os.path.dirname(__file__), 'models'))
+
 from fastapi import FastAPI
 from contextlib import asynccontextmanager
 from config.database import create_db_and_tables

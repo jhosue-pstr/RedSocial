@@ -17,7 +17,7 @@ class Usuario(UsuarioBase, table=True):
     estado: bool = True
     mensajes: List["Mensaje"] = Relationship(back_populates="usuario")
     participaciones: list["ParticipanteConversacion"] = Relationship(back_populates="usuario")
-
+    perfil: "Perfil" = Relationship(back_populates="usuario")  
 
 class UsuarioCreate(UsuarioBase):
     Contrasena: str

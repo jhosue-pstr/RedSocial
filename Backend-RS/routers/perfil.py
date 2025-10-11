@@ -3,22 +3,24 @@ from sqlmodel import Session
 from config.database import get_session
 from models.perfil import PerfilCreate, PerfilPublic, PerfilUpdate
 from controlers.perfil import (
-    CrearPerfil, LeerPerfilPorUsuario, ActualizarPerfil, EliminarPerfil
+    CrearPerfil, LeerPerfilPorId, ActualizarPerfil, EliminarPerfil
 )
 from routers.auth import get_current_active_user
-from models.usuario import Usuario  # Importar el modelo Usuario para validación
+from models.usuario import Usuario  # Importar Usuario para validación
 
 router = APIRouter()
 
-@router.get("/perfil/{IdUsuario}", response_model=PerfilPublic)
+# Ruta para obtener el perfil por IdPerfil
+@router.get("/perfil/{IdPerfil}", response_model=PerfilPublic)
 def ObtenerPerfil(
-    IdUsuario: int, 
+    IdPerfil: int,  # Cambiamos IdUsuario por IdPerfil
     session: Session = Depends(get_session),
     current_user: Usuario = Depends(get_current_active_user)
 ):
-    return LeerPerfilPorUsuario(IdUsuario, session)
+    return LeerPerfilPorId(IdPerfil, session)  # Llamamos a la nueva función con `IdPerfil`
 
 
+# Ruta para crear un perfil para el usuario autenticado
 @router.post("/perfil/", response_model=PerfilPublic)
 def CrearPerfilUsuario(
     perfil: PerfilCreate, 
@@ -27,7 +29,7 @@ def CrearPerfilUsuario(
 ):
     return CrearPerfil(perfil, session, current_user.IdUsuario)
 
-
+# Ruta para actualizar el perfil (usando PATCH)
 @router.patch("/perfil/{IdPerfil}", response_model=PerfilPublic)
 def ActualizarPerfilUsuario(
     IdPerfil: int, 
@@ -38,6 +40,7 @@ def ActualizarPerfilUsuario(
     return ActualizarPerfil(IdPerfil, datos, session)
 
 
+# Ruta para eliminar un perfil
 @router.delete("/perfil/{IdPerfil}")
 def EliminarPerfilUsuario(
     IdPerfil: int, 
