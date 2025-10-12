@@ -35,6 +35,8 @@ class Perfil(PerfilBase, table=True):
     usuario: "Usuario" = Relationship(back_populates="perfil")
     enlaces_perfil: List["EnlacesPerfil"] = Relationship(back_populates="perfil")
     fotos_perfil: List["FotosPerfil"] = Relationship(back_populates="perfil")
+    musica_perfil: List["MusicaPerfil"] = Relationship(back_populates="perfil")
+    publicaciones: List["Publicaciones"] = Relationship(back_populates="perfil")
 
     
 
