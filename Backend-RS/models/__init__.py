@@ -7,3 +7,4 @@ from .publicaciones import Publicaciones, PublicacionesCreate, PublicacionesPubl
 from .archivos_publicaciones import (ArchivosPublicaciones, ArchivosPublicacionesCreate, ArchivosPublicacionesPublic, ArchivosPublicacionesUpdate)
 from .menciones_usuario import (MencionesUsuario, MencionesUsuarioCreate, MencionesUsuarioPublic, MencionesUsuarioUpdate)
 from .likes import Likes, LikesCreate, LikesPublic, LikesUpdate
+from .intereses import Intereses, InteresCreate, InteresPublic, InteresUpdate
