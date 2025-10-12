@@ -1,5 +1,5 @@
+from typing import List, Optional
 from sqlmodel import Field, SQLModel, Relationship
-from typing import Optional
 import datetime
 from models.perfil import Perfil  # Asegúrate de importar el modelo Usuario
 from config.database import get_session
@@ -17,6 +17,7 @@ class Publicaciones(PublicacionesBase, table=True):
     IdPerfil: int = Field(foreign_key="perfil.IdPerfil")
 
     perfil: "Perfil" = Relationship(back_populates="publicaciones")
+    archivos_publicaciones: List["ArchivosPublicaciones"] = Relationship(back_populates="publicacion")
 
 # I/O models
 class PublicacionesCreate(PublicacionesBase):

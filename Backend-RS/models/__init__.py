@@ -4,4 +4,4 @@ from .enlaces_perfil import EnlacesPerfil, EnlacesPerfilCreate, EnlacesPerfilPub
 from .fotos_perfil import FotosPerfil, FotosPerfilCreate, FotosPerfilPublic, FotosPerfilUpdate
 from .musica_perfil import MusicaPerfil, MusicaPerfilCreate, MusicaPerfilPublic, MusicaPerfilUpdate
 from .publicaciones import Publicaciones, PublicacionesCreate, PublicacionesPublic, PublicacionesUpdate
-
+from .archivos_publicaciones import (ArchivosPublicaciones, ArchivosPublicacionesCreate, ArchivosPublicacionesPublic, ArchivosPublicacionesUpdate)
