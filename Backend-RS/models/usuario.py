@@ -19,6 +19,7 @@ class Usuario(UsuarioBase, table=True):
     participaciones: list["ParticipanteConversacion"] = Relationship(back_populates="usuario")
     perfil: "Perfil" = Relationship(back_populates="usuario")  
     menciones_recibidas: List["MencionesUsuario"] = Relationship(back_populates="usuario")
+    likes_hechos: List["Likes"] = Relationship(back_populates="usuario")
 
 class UsuarioCreate(UsuarioBase):
     Contrasena: str

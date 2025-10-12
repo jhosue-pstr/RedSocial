@@ -6,3 +6,4 @@ from .musica_perfil import MusicaPerfil, MusicaPerfilCreate, MusicaPerfilPublic,
 from .publicaciones import Publicaciones, PublicacionesCreate, PublicacionesPublic, PublicacionesUpdate
 from .archivos_publicaciones import (ArchivosPublicaciones, ArchivosPublicacionesCreate, ArchivosPublicacionesPublic, ArchivosPublicacionesUpdate)
 from .menciones_usuario import (MencionesUsuario, MencionesUsuarioCreate, MencionesUsuarioPublic, MencionesUsuarioUpdate)
+from .likes import Likes, LikesCreate, LikesPublic, LikesUpdate
