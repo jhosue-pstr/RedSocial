@@ -18,6 +18,7 @@ class Publicaciones(PublicacionesBase, table=True):
 
     perfil: "Perfil" = Relationship(back_populates="publicaciones")
     archivos_publicaciones: List["ArchivosPublicaciones"] = Relationship(back_populates="publicacion")
+    menciones_usuario: List["MencionesUsuario"] = Relationship(back_populates="publicacion")
 
 # I/O models
 class PublicacionesCreate(PublicacionesBase):

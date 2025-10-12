@@ -5,3 +5,4 @@ from .fotos_perfil import FotosPerfil, FotosPerfilCreate, FotosPerfilPublic, Fot
 from .musica_perfil import MusicaPerfil, MusicaPerfilCreate, MusicaPerfilPublic, MusicaPerfilUpdate
 from .publicaciones import Publicaciones, PublicacionesCreate, PublicacionesPublic, PublicacionesUpdate
 from .archivos_publicaciones import (ArchivosPublicaciones, ArchivosPublicacionesCreate, ArchivosPublicacionesPublic, ArchivosPublicacionesUpdate)
+from .menciones_usuario import (MencionesUsuario, MencionesUsuarioCreate, MencionesUsuarioPublic, MencionesUsuarioUpdate)
