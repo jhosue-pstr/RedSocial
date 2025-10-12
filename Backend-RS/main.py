@@ -22,6 +22,7 @@ from routers.menciones_usuario import router as menciones_usuario_router
 from routers.likes import router as likes_router
 from routers.intereses import router as intereses_router
 from routers.perfil_interes import router as perfil_interes_router
+from routers.hashtags import router as hashtags_router
 
 app = FastAPI()
 
@@ -44,6 +45,7 @@ app.include_router(menciones_usuario_router, prefix="/api", tags=["menciones_usu
 app.include_router(likes_router, prefix="/api", tags=["likes"])
 app.include_router(intereses_router, prefix="/api", tags=["intereses"])
 app.include_router(perfil_interes_router, prefix="/api", tags=["perfil_interes"])
+app.include_router(hashtags_router, prefix="/api", tags=["hashtags"])
 
 @app.on_event("startup")
 def on_startup():
