@@ -1,5 +1,5 @@
-from sqlmodel import Field, SQLModel
-from typing import Optional
+from sqlmodel import Field, SQLModel, Relationship   # ← añade Relationship
+from typing import Optional, List                    # ← añade List
 import datetime
 
 class HashtagBase(SQLModel):
@@ -8,6 +8,9 @@ class HashtagBase(SQLModel):
 
 class Hashtags(HashtagBase, table=True):
     IdHashtag: Optional[int] = Field(default=None, primary_key=True)
+
+    # relación inversa hacia el link-model (forward ref con string)
+    publicaciones_rel: List["PublicacionHashtag"] = Relationship(back_populates="hashtag")
 
 class HashtagCreate(HashtagBase):
     pass

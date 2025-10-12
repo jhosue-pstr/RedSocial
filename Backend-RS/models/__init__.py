@@ -10,3 +10,4 @@ from .likes import Likes, LikesCreate, LikesPublic, LikesUpdate
 from .intereses import Intereses, InteresCreate, InteresPublic, InteresUpdate
 from .perfil_interes import PerfilInteres, PerfilInteresCreate, PerfilInteresPublic, PerfilInteresUpdate
 from .hashtags import Hashtags, HashtagCreate, HashtagPublic, HashtagUpdate
+from .publicacion_hashtag import (PublicacionHashtag, PublicacionHashtagCreate, PublicacionHashtagPublic, PublicacionHashtagUpdate)

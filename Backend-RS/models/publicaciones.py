@@ -20,6 +20,7 @@ class Publicaciones(PublicacionesBase, table=True):
     archivos_publicaciones: List["ArchivosPublicaciones"] = Relationship(back_populates="publicacion")
     menciones_usuario: List["MencionesUsuario"] = Relationship(back_populates="publicacion")
     likes: List["Likes"] = Relationship(back_populates="publicacion")
+    hashtags_rel: List["PublicacionHashtag"] = Relationship(back_populates="publicacion")
 
 # I/O models
 class PublicacionesCreate(PublicacionesBase):
