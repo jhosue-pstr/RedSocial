@@ -8,3 +8,4 @@ from .archivos_publicaciones import (ArchivosPublicaciones, ArchivosPublicacione
 from .menciones_usuario import (MencionesUsuario, MencionesUsuarioCreate, MencionesUsuarioPublic, MencionesUsuarioUpdate)
 from .likes import Likes, LikesCreate, LikesPublic, LikesUpdate
 from .intereses import Intereses, InteresCreate, InteresPublic, InteresUpdate
+from .perfil_interes import PerfilInteres, PerfilInteresCreate, PerfilInteresPublic, PerfilInteresUpdate
