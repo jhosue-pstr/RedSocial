@@ -5,7 +5,7 @@ from routers.conversaciones import router as conversacion_router
 from routers.mensajes import router as mensaje_router
 from routers.archivos_mensajes import router as archivo_router
 from routers.participantes_conversacion import router as participante_router
-from routers.auth import router as auth_router  # Nuevo router de autenticación
+from routers.auth import router as auth_router  
 
 app = FastAPI()
 
