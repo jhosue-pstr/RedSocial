@@ -24,7 +24,9 @@ from routers.intereses import router as intereses_router
 from routers.perfil_interes import router as perfil_interes_router
 from routers.hashtags import router as hashtags_router
 from routers.publicacion_hashtag import router as publicacion_hashtag_router
-from routers.comentarios import router as comentarios_router  
+from routers.comentarios import router as comentarios_router
+from routers.amistades import router as amistades_router  
+
 app = FastAPI()
 
 # Incluir los routers de la API
@@ -49,6 +51,7 @@ app.include_router(perfil_interes_router, prefix="/api", tags=["perfil_interes"]
 app.include_router(hashtags_router, prefix="/api", tags=["hashtags"])
 app.include_router(publicacion_hashtag_router, prefix="/api", tags=["publicacion_hashtag"])
 app.include_router(comentarios_router, prefix="/api", tags=["comentarios"])
+app.include_router(amistades_router, prefix="/api", tags=["amistades"])  
 
 @app.on_event("startup")
 def on_startup():

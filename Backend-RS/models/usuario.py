@@ -22,6 +22,8 @@ class Usuario(UsuarioBase, table=True):
     likes_hechos: List["Likes"] = Relationship(back_populates="usuario")
     comentarios_rel: List["Comentario"] = Relationship(back_populates="usuario")
 
+    amistades: List["Amistades"] = Relationship(back_populates="usuario")
+
 class UsuarioCreate(UsuarioBase):
     Contrasena: str
 

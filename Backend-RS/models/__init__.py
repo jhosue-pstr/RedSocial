@@ -12,3 +12,4 @@ from .perfil_interes import PerfilInteres, PerfilInteresCreate, PerfilInteresPub
 from .hashtags import Hashtags, HashtagCreate, HashtagPublic, HashtagUpdate
 from .publicacion_hashtag import (PublicacionHashtag, PublicacionHashtagCreate, PublicacionHashtagPublic, PublicacionHashtagUpdate)
 from .comentarios import Comentario, ComentarioCreate, ComentarioPublic, ComentarioUpdate  
+from .amistades import Amistades, AmistadCreate, AmistadPublic, AmistadUpdate  
