@@ -23,6 +23,7 @@ class Usuario(UsuarioBase, table=True):
     comentarios_rel: List["Comentario"] = Relationship(back_populates="usuario")
 
     amistades: List["Amistades"] = Relationship(back_populates="usuario")
+    recomendaciones: List["Recomendacion"] = Relationship(back_populates="usuario")
 
 class UsuarioCreate(UsuarioBase):
     Contrasena: str
