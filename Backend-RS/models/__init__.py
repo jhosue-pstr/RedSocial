@@ -1,2 +1,16 @@
 from .usuario import Usuario, UsuarioCreate, UsuarioPublic, UsuarioUpdate
-
+from .perfil import Perfil, PerfilCreate, PerfilPublic, PerfilUpdate
+from .enlaces_perfil import EnlacesPerfil, EnlacesPerfilCreate, EnlacesPerfilPublic, EnlacesPerfilUpdate
+from .fotos_perfil import FotosPerfil, FotosPerfilCreate, FotosPerfilPublic, FotosPerfilUpdate
+from .musica_perfil import MusicaPerfil, MusicaPerfilCreate, MusicaPerfilPublic, MusicaPerfilUpdate
+from .publicaciones import Publicaciones, PublicacionesCreate, PublicacionesPublic, PublicacionesUpdate
+from .archivos_publicaciones import (ArchivosPublicaciones, ArchivosPublicacionesCreate, ArchivosPublicacionesPublic, ArchivosPublicacionesUpdate)
+from .menciones_usuario import (MencionesUsuario, MencionesUsuarioCreate, MencionesUsuarioPublic, MencionesUsuarioUpdate)
+from .likes import Likes, LikesCreate, LikesPublic, LikesUpdate
+from .intereses import Intereses, InteresCreate, InteresPublic, InteresUpdate
+from .perfil_interes import PerfilInteres, PerfilInteresCreate, PerfilInteresPublic, PerfilInteresUpdate
+from .hashtags import Hashtags, HashtagCreate, HashtagPublic, HashtagUpdate
+from .publicacion_hashtag import (PublicacionHashtag, PublicacionHashtagCreate, PublicacionHashtagPublic, PublicacionHashtagUpdate)
+from .comentarios import Comentario, ComentarioCreate, ComentarioPublic, ComentarioUpdate  
+from .amistades import Amistades, AmistadCreate, AmistadPublic, AmistadUpdate  
+from .recomendacion import Recomendacion, RecomendacionCreate, RecomendacionPublic, RecomendacionUpdate  
