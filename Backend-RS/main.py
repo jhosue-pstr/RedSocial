@@ -24,3 +24,4 @@ def on_startup():
 @app.get("/")
 def read_root():
     return {"message": "API funcionando"}
+
